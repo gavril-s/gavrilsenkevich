@@ -1,1 +1,1 @@
-#finger{width:30%}
+body::before{display:block;content:'';height:60px}#finger{width:30%}
