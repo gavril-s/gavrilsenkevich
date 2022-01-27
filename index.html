@@ -28,30 +28,30 @@
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
         <div class="container">
-          <a href="#" class="navbar-brand h1">Сайтик Гаврила Сенькевича</a>
-  
-          <button
+            <a href="#" class="navbar-brand h1">Сайтик Гаврила Сенькевича</a>
+            
+            <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navmenu"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
   
-          <div class="collapse navbar-collapse" id="navmenu">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a href="#whoami" class="nav-link">Кто это?</a>
-              </li>
-              <li class="nav-item">
-                <a href="#whatishype" class="nav-link">Что такое хайп?</a>
-              </li>
-              <li class="nav-item">
-                <a href="#contacts" class="nav-link">Контакты</a>
-              </li>
-            </ul>
-          </div>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="#whoami" class="nav-link">Кто это?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#whatishype" class="nav-link">Что такое хайп?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contacts" class="nav-link">Контакты</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -67,6 +67,20 @@
             />
         </div>
       </div>
+    </section>
+
+    <section class="bg-light p-5">
+        <div class="container text-center text-dark">
+            <div id="hype-bar-container">
+                <div class="progress my-3 h-auto" id="hype-bar-box">
+                    <div class="progress-bar display-6 bg-success" id="hype-bar">0%</div>
+                </div>
+                <button type="button" class="btn btn-dark btn-lg" onclick="add_percentage(20)">Хайпануть</button>
+            </div>
+            <div id="full-hype">
+                <h1 class=>Ты нереально хайпанул... Респект!</h1>
+            </div>
+        </div>
     </section>
 
     <section class="bg-light text-dark p-5 text-center text-sm-start" id="whoami">
@@ -163,5 +177,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
 </body>
 </html>
