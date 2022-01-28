@@ -1,0 +1,23 @@
+{
+  "name": "gavrilsenkevich.ru",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gavril-s/gavrilsenkevich.ru.git"
+  },
+  "author": "Gavril Senkevich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gavril-s/gavrilsenkevich.ru/issues"
+  },
+  "homepage": "https://github.com/gavril-s/gavrilsenkevich.ru#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
