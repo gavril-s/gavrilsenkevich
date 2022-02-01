@@ -13,20 +13,21 @@ hype_bar_init();
 
 function hype_bar_init()
 {
-    hype_text.innerHTML = `Если пользователи этого сайта наберут ${clicks_max} кликов, случится лютый хайп...`;
     fetch(url, {method: 'GET'})
       .then((response) => {
       return response.json();
     })
     .then((data) => {
       clicks = data.hype_bar_clicks;
-      const val = (clicks / clicks_max) * hype_bar_box.clientWidth;
-      hype_bar.style.width = `${val}px`;
-      hype_bar.innerHTML = clicks;
-      if (clicks >= clicks_max)
+      while (clicks >= clicks_max)
       {
         fool_user();
       }
+      hype_text.innerHTML = `Если пользователи этого сайта наберут ${clicks_max} кликов, случится лютый хайп...`;
+      const val = (clicks / clicks_max) * hype_bar_box.clientWidth;
+      hype_bar.style.width = `${val}px`;
+      hype_bar.innerHTML = clicks;
+      
     });
 }
 
