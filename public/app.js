@@ -13,8 +13,8 @@ hype_bar_init();
 
 function hype_bar_init()
 {
-    hype_text.innerHTML = `Если пользователи этого сайта наберут ${clicks_max} кликов, случится лютый хайп...`
-       fetch(url, {method: 'GET'})
+    hype_text.innerHTML = `Если пользователи этого сайта наберут ${clicks_max} кликов, случится лютый хайп...`;
+    fetch(url, {method: 'GET'})
       .then((response) => {
       return response.json();
     })
