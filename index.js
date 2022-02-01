@@ -1,56 +1,29 @@
-const http = require('http');
+const express = require('express');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs')
 
-const server = http.createServer((req, res) => {
-    let file_path = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
-    let extname = path.extname(file_path);
-    let content_type = 'text/html';
-    switch (extname)
-    {
-        case '.js':
-            content_type = 'text/javascript';
-            break;
-        case '.css':
-            content_type = 'text/css';
-            break;
-        case '.json':
-            content_type = 'application/json';
-            break;
-        case '.png':
-            content_type = 'image/png';
-            break;
-        case '.jpg':
-            content_type = 'image/jpg';
-            break;
-        case '.svg':
-            content_type = 'image/svg';
-            break;
-    }
+const app = express();
 
-    fs.readFile(file_path, (err, content) => {
-        if (err)
-        {
-            if (err.code === 'ENOENT') // Page not found
-            {
-                fs.readFile(path.join(__dirname, 'public', '404.html'), (err, content) => {
-                    res.writeHead(200, { 'Content-Type': 'text/html' });
-                    res.end(content, 'utf8');
-                });
-            }
-            else
-            {
-                res.writeHead(500);
-                res.end(`Server error: ${err.code}`);
-            }
-        }
-        else
-        {
-            res.writeHead(200, { 'Content-Type': content_type });
-            res.end(content, 'utf8');
-        }
+app.get('/info.json', (req, res) => {
+    let info = {};
+    fs.readFile(path.join(__dirname, 'public', 'info.json'), function(err, data) {
+        if (err) throw err;
+        info = JSON.parse(data);
+        res.json(info)
     });
 });
 
+app.put('/info.json', (req, res) => {
+    let info = {};
+    fs.readFile(path.join(__dirname, 'public', 'info.json'), function(err, data) {
+        if (err) throw err;
+        info = JSON.parse(data);
+        info.hype_bar_clicks += 1;
+        fs.writeFile(path.join(__dirname, 'public', 'info.json'), JSON.stringify(info), err => { if (err) throw err; });
+        res.json(info)
+    });
+});
+
+app.use(express.static(path.join(__dirname, 'public')))
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
