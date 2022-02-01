@@ -6,7 +6,7 @@ import allowCors from 'cors.js';
 
 const PORT = process.env.PORT || 5000;
 const app = express();
-/*app.use(cors({
+app.use(cors({
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
@@ -25,7 +25,7 @@ app.options('/*', (req, res) => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
     res.send(200);
-});*/
+});
 
 app.get('/info.json', (req, res) => {
     let info = {};
