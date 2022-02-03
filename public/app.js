@@ -1,13 +1,17 @@
-hype_bar = document.querySelector('#hype-bar');
-hype_bar_box = document.querySelector('#hype-bar-box');
-hype_bar_container = document.querySelector('#hype-bar-container');
-full_hype = document.querySelector('#full-hype');
-hype_text = document.querySelector('#hype-text')
+const hype_bar = document.querySelector('#hype-bar');
+const hype_bar_button = document.querySelector('#hype-bar-button');
+const hype_bar_box = document.querySelector('#hype-bar-box');
+const hype_bar_container = document.querySelector('#hype-bar-container');
+const full_hype = document.querySelector('#full-hype');
+const hype_text = document.querySelector('#hype-text')
 
 const max_clicks_arr = [10, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 10000];
+const url = window.location.origin + '/info.json';
+const put_url = url + '?put=true';
 let clicks_max = max_clicks_arr[0];
 let clicks = 0;
-const url = window.location.origin + '/info.json';
+
+hype_bar_button.addEventListener('click', hype_bar_increment);
 hype_bar_init();
 hype_bar_init();
 
@@ -22,6 +26,8 @@ function hype_bar_init()
       while (clicks >= clicks_max)
       {
         fool_user();
+        if (max_clicks_arr.indexOf(clicks_max) == max_clicks_arr.length - 1)
+            break;
       }
       hype_text.innerHTML = `Если пользователи этого сайта наберут ${clicks_max} кликов, случится лютый хайп...`;
       const val = (clicks / clicks_max) * hype_bar_box.clientWidth;
@@ -31,7 +37,7 @@ function hype_bar_init()
     });
 }
 
-function clicked()
+function hype_bar_increment()
 {
     clicks++;
     const val = (clicks / clicks_max) * hype_bar_box.clientWidth;
@@ -44,7 +50,7 @@ function clicked()
     {
         fool_user();
     }
-    fetch(url, {method: 'PUT'});
+    fetch(put_url, {method: 'GET'});
 }
 
 function fool_user()
