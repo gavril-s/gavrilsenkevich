@@ -14,12 +14,12 @@ app.get('/info.json', (req, res) => {
     fs.readFile(path.join(__dirname, 'public', 'info.json'), function(err, data) {
         if (err) throw err;
         info = JSON.parse(data);
-        res.json(info)
         if (req.query.put == 'true')
         {
             info.hype_bar_clicks += 1;
             fs.writeFile(path.join(__dirname, 'public', 'info.json'), JSON.stringify(info), err => { if (err) throw err; });
         }
+        res.json(info);
     });
 });
 
